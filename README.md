@@ -5,7 +5,7 @@ Proyecto colaborativo para el desarrollo de una calculadora de notas para estudi
 
 ## Imagen representativa del sistema
 
-![Logo](imagenes_README/logo.jpg)
+![Logo](https://raw.githubusercontent.com/Mike2116-sudo/Grades-Calculator/main/imagenes_README/logo.jpg)
 
 ## Lista de las 3 funcionalidades principales planificadas
 
