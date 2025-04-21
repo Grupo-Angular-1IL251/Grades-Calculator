@@ -4,7 +4,9 @@
 Proyecto colaborativo para el desarrollo de una calculadora de notas para estudiantes universitarios, que basado en las notas suministradas por el estudiante, las notas faltantes (es decir, que aún no se han entregado y/o calificado) y los porcentajes ponderados de la materia (% de tareas, % de parciales, % de semestral etc) se calcúla que notas necesita el estudiante para poder alcanzar una nota de pase de 71.
 
 ## Imagen representativa del sistema
-<img src="./imagenes_README/logo.jpg" alt="Logo" style="width:300px; border-radius:10px;">
+
+![image info](./imagenes_README/logo.jpg)
+
 
 ## Lista de las 3 funcionalidades principales planificadas
 
@@ -35,7 +37,7 @@ Proyecto colaborativo para el desarrollo de una calculadora de notas para estudi
 #### Paso 1 CREACIÓN DEL AMBIENTE DEL REPOSITORIO
 El primer paso para clonar el repositorio del proyecto en visual studio (el IDE seleccionado para el proyecto) es tener una carpeta donde se abrirá y clonará el repositorio. En este caso, la carpeta se llama GRADES_CALCULATOR **(puede llamarse de cualquier forma, pues es solo el recipiente local donde se almacenará el repositorio)**, y una vez creada, se abre esta carpeta en el visual studio:
 
-<img src="./imagenes_README/p1_clone.jpg" alt="p1_clone" style="width:600px; border-radius:10px;">
+![image info](./imagenes_README/p1_clone.jpg)
 
 
 <img src="./imagenes_README/p1_clone_2.jpg" alt="p1_clone_2" style="width:600px; border-radius:10px;">
