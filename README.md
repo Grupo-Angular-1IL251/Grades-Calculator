@@ -4,7 +4,9 @@
 Proyecto colaborativo para el desarrollo de una calculadora de notas para estudiantes universitarios, que basado en las notas suministradas por el estudiante, las notas faltantes (es decir, que aún no se han entregado y/o calificado) y los porcentajes ponderados de la materia (% de tareas, % de parciales, % de semestral etc) se calcúla que notas necesita el estudiante para poder alcanzar una nota de pase de 71.
 
 ## Imagen representativa del sistema
-![image info](./Imagenes_README/logo.jpg)
+
+<img src="./Imagenes_README/logo.jpg" alt="p2_clone" style="width:300px; border-radius:10px;">
+
 ## Lista de las 3 funcionalidades principales planificadas
 
 ### (Funcionalidad 1) Gestión de Notas:
