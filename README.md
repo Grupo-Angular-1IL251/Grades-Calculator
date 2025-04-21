@@ -5,8 +5,7 @@ Proyecto colaborativo para el desarrollo de una calculadora de notas para estudi
 
 ## Imagen representativa del sistema
 
-![image info](./imagenes_README/logo.jpg)
-
+![Logo](imagenes_README/logo.jpg)
 
 ## Lista de las 3 funcionalidades principales planificadas
 
