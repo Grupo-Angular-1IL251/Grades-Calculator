@@ -1,0 +1,4 @@
+#ENTORNO VIRTUAL LOCAL DE PYTHON, ES OPCIONAL Y NO ES NECESARIO SUBIRLO AL GITHUB
+.venv/
+#.env que no debemos compartir al publico, tiene contraseñas api keys y otros datos
+.env
