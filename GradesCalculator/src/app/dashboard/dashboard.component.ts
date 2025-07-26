@@ -18,4 +18,8 @@ export class DashboardComponent {
     // Navigate to login page
     this.router.navigate(['/login']);
   }
+
+  irAMaterias() {
+    this.router.navigate(['/materias']);
+  }
 }
