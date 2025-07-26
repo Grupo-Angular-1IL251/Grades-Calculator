@@ -1,0 +1,35 @@
+<div class="form-container">
+  <h2>Inserte la información solicitada para comenzar a agregar notas</h2>
+
+  <form [formGroup]="formularioNotas" (ngSubmit)="enviarFormulario()">
+    <label for="materia">Materia</label>
+    <input id="materia" formControlName="materia" placeholder="Ingrese el nombre de la materia" />
+
+    <div class="bloque">
+      <h3>Parciales</h3>
+      <label>Porcentaje de los parciales</label>
+      <input type="number" formControlName="parciales" />%
+    </div>
+
+    <div class="bloque">
+      <h3>Asignaciones</h3>
+      <label>Porcentaje de las asignaciones</label>
+      <input type="number" formControlName="asignaciones" />%
+    </div>
+
+    <div class="bloque">
+      <h3>Asistencia</h3>
+      <label>Porcentaje de asistencia</label>
+      <input type="number" formControlName="asistencia" />%
+    </div>
+
+    <p class="nota">
+      Si alguna opción de porcentaje no se encuentra dentro de la división que utiliza su profesor, por favor coloque un 0.
+    </p>
+
+    <div class="botones">
+      <button type="button" (click)="regresar()">Regresar</button>
+      <button type="submit" class="enviar">Enviar</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,73 @@
+// Variables
+$form-bg: #000;
+$text-color: white;
+$button-orange: orange;
+$button-white: white;
+
+.form-container {
+  background-color: $form-bg;
+  color: $text-color;
+  padding: 30px;
+  max-width: 600px;
+  margin: auto;
+  font-family: Arial, sans-serif;
+  border-radius: 10px;
+
+  h2 {
+    margin-bottom: 20px;
+  }
+
+  form {
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 15px;
+    }
+
+    input {
+      display: block;
+      margin: 5px 0 20px;
+      padding: 10px;
+      width: 100%;
+      font-size: 14px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    .bloque {
+      margin-bottom: 25px;
+    }
+
+    .nota {
+      font-size: 12px;
+      margin: 15px 0;
+      color: lighten($text-color, 30%); // ← FUNCIONAL Y COMPATIBLE
+    }
+
+    .botones {
+      display: flex;
+      justify-content: space-between;
+      max-width: 350px;
+
+      button {
+        padding: 10px 20px;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+
+        &.enviar {
+          background-color: $button-orange;
+          color: $text-color;
+        }
+
+        &:not(.enviar) {
+          background-color: $button-white;
+          color: #000;
+        }
+      }
+    }
+  }
+}
+
