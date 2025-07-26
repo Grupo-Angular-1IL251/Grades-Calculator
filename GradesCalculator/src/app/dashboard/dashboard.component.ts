@@ -10,16 +10,13 @@ export class DashboardComponent {
 
   constructor(private router: Router) {}
 
-  logout() {
-    // Clear any stored auth data (localStorage, sessionStorage, etc.)
-    localStorage.removeItem('authToken');
-    localStorage.removeItem('userData');
-    
-    // Navigate to login page
-    this.router.navigate(['/login']);
-  }
-
   irAMaterias() {
     this.router.navigate(['/materias']);
+  }
+
+  logout() {
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('userData');
+    this.router.navigate(['/login']);
   }
 }
