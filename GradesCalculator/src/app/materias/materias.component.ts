@@ -9,6 +9,8 @@ import {
   ValidatorFn
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { ApiService } from '../../services/api-service.service';
+
 
 // Validador personalizado: suma de porcentajes debe ser 100
 export function porcentajeTotalValidator(): ValidatorFn {
@@ -33,7 +35,7 @@ export class MateriasComponent {
   formularioNotas: FormGroup;
   loading = false;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private apiService: ApiService) {
     this.formularioNotas = this.fb.group(
       {
         materia: ['', Validators.required],
@@ -49,24 +51,48 @@ export class MateriasComponent {
   }
 
   enviarFormulario() {
-    this.formularioNotas.markAllAsTouched();
+  this.formularioNotas.markAllAsTouched();
 
-    const materia = this.formularioNotas.get('materia')?.value?.trim();
-    if (!materia) {
-      this.formularioNotas.get('materia')?.setErrors({ required: true });
-      return;
-    }
-
-    if (this.formularioNotas.errors?.['porcentajeInvalido']) {
-      return;
-    }
-
-    if (this.formularioNotas.valid) {
-      console.log('Datos del formulario:', this.formularioNotas.value);
-      alert('Formulario válido. Listo para enviar.');
-      this.formularioNotas.reset();
-    }
+  const materia = this.formularioNotas.get('materia')?.value?.trim();
+  if (!materia) {
+    this.formularioNotas.get('materia')?.setErrors({ required: true });
+    return;
   }
+
+  if (this.formularioNotas.errors?.['porcentajeInvalido']) {
+    return;
+  }
+
+  if (this.formularioNotas.valid) {
+    this.loading = true;
+
+    const payload = {
+      nombre_materia: materia,
+      porc_parciales: this.formularioNotas.value.parciales,
+      cant_parciales: this.formularioNotas.value.cantidad_parciales,
+      porc_asig: this.formularioNotas.value.asignaciones,
+      cant_asig: this.formularioNotas.value.cantidad_asignaciones,
+      porc_portafolio: this.formularioNotas.value.portafolio,
+      porc_semestral: this.formularioNotas.value.semestral,
+      uuid_estudiante: 'a835d4d7-320b-43dc-92e3-05e95d56aa62'  // TO DO
+    };
+
+    this.apiService.registrarMateria(payload).subscribe({
+      next: (response) => {
+        console.log('Respuesta:', response);
+        alert('Materia registrada correctamente.');
+        this.formularioNotas.reset();
+        this.loading = false;
+      },
+      error: (error) => {
+        console.error('Error al registrar:', error);
+        alert('Error al registrar la materia.');
+        this.loading = false;
+      }
+    });
+  }
+}
+
 
   regresar() {
     history.back();

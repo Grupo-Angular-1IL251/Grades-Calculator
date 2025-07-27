@@ -3,6 +3,7 @@ from supabase import create_client
 from pydantic import BaseModel, EmailStr
 import os
 from dotenv import load_dotenv
+from fastapi.middleware.cors import CORSMiddleware
 
 load_dotenv()
 
@@ -12,14 +13,24 @@ supabase = create_client(supabase_url, supabase_key)
 
 app = FastAPI()
 
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # o reemplaza "*" por "http://localhost:4200" si deseas limitar
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
 class MateriaPorEstudiante(BaseModel):
     nombre_materia: str
-    porc_parciales: float
+    porc_parciales: int
     cant_parciales: int
-    porc_asig: float
+    porc_asig: int
     cant_asig: int
-    porc_portafolio: float
-    porc_semestral: float
+    porc_portafolio: int
+    porc_semestral: int
     uuid_estudiante: str  
 
 class InsertarNota(BaseModel):
