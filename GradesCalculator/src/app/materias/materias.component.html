@@ -5,57 +5,70 @@
     <label for="materia">Materia</label>
     <input id="materia" formControlName="materia" placeholder="Ingrese el nombre de la materia" />
     <div *ngIf="formularioNotas.get('materia')?.invalid && formularioNotas.get('materia')?.touched" class="error">
-      ⚠️ Debe ingresar el nombre de la materia.
+      ⚠️ La materia no puede estar en blanco.
     </div>
 
-    <div class="bloque">
-      <h3>Parciales</h3>
-      <label>Porcentaje de los parciales</label>
-      <div class="input-group">
+    <!-- PARCIALES -->
+    <div class="bloque fila">
+      <div class="col-porcentaje">
+        <h3>Parciales</h3>
+        <label>Porcentaje de los parciales</label>
         <div class="input-porcentaje">
-          <input type="number" formControlName="parciales" />
-          <span>%</span>
+          <input type="number" formControlName="parciales" /> <span>%</span>
         </div>
-        <input type="number" formControlName="cantidad_parciales" placeholder="Cantidad" />
       </div>
-      <div *ngIf="formularioNotas.get('cantidad_parciales')?.invalid && formularioNotas.get('cantidad_parciales')?.touched" class="error">
-        ⚠️ Máximo 5 parciales por semestre.
+      <div class="col-cantidad">
+        <label>Cantidad de parciales</label>
+        <input type="number" formControlName="cantidad_parciales" maxlength="3" />
+        <div *ngIf="formularioNotas.get('cantidad_parciales')?.errors?.['max'] && formularioNotas.get('cantidad_parciales')?.touched" class="error">
+          ⚠️ Máximo 5 parciales por semestre.
+        </div>
+        <div *ngIf="formularioNotas.get('cantidad_parciales')?.errors?.['min'] && formularioNotas.get('cantidad_parciales')?.touched" class="error">
+          ⚠️ Debe haber al menos 1 parcial.
+        </div>
       </div>
     </div>
 
-    <div class="bloque">
-      <h3>Asignaciones</h3>
-      <label>Porcentaje de las asignaciones</label>
-      <div class="input-group">
+    <!-- ASIGNACIONES -->
+    <div class="bloque fila">
+      <div class="col-porcentaje">
+        <h3>Asignaciones</h3>
+        <label>Porcentaje de las asignaciones</label>
         <div class="input-porcentaje">
-          <input type="number" formControlName="asignaciones" />
-          <span>%</span>
+          <input type="number" formControlName="asignaciones" /> <span>%</span>
         </div>
-        <input type="number" formControlName="cantidad_asignaciones" placeholder="Cantidad" />
       </div>
-      <div *ngIf="formularioNotas.get('cantidad_asignaciones')?.invalid && formularioNotas.get('cantidad_asignaciones')?.touched" class="error">
-        ⚠️ Máximo 30 asignaciones por semestre.
+      <div class="col-cantidad">
+        <label>Cantidad de asignaciones</label>
+        <input type="number" formControlName="cantidad_asignaciones" maxlength="3" />
+        <div *ngIf="formularioNotas.get('cantidad_asignaciones')?.errors?.['max'] && formularioNotas.get('cantidad_asignaciones')?.touched" class="error">
+          ⚠️ Máximo 30 asignaciones por semestre.
+        </div>
+        <div *ngIf="formularioNotas.get('cantidad_asignaciones')?.errors?.['min'] && formularioNotas.get('cantidad_asignaciones')?.touched" class="error">
+          ⚠️ Debe haber al menos 1 asignación.
+        </div>
       </div>
     </div>
 
+    <!-- PORTAFOLIO -->
     <div class="bloque">
       <h3>Portafolio</h3>
       <label>Porcentaje del portafolio</label>
       <div class="input-porcentaje">
-        <input type="number" formControlName="portafolio" />
-        <span>%</span>
+        <input type="number" formControlName="portafolio" /> <span>%</span>
       </div>
     </div>
 
+    <!-- SEMESTRAL -->
     <div class="bloque">
       <h3>Semestral</h3>
       <label>Porcentaje del examen semestral</label>
       <div class="input-porcentaje">
-        <input type="number" formControlName="semestral" />
-        <span>%</span>
+        <input type="number" formControlName="semestral" /> <span>%</span>
       </div>
     </div>
 
+    <!-- ERROR TOTAL -->
     <div *ngIf="formularioNotas.errors?.['porcentajeInvalido'] && formularioNotas.touched" class="error">
       ⚠️ La suma total de porcentajes debe ser exactamente 100%.
     </div>

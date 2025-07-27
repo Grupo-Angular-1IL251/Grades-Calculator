@@ -71,4 +71,6 @@ export class MateriasComponent {
   regresar() {
     history.back();
   }
+  
+
 }
