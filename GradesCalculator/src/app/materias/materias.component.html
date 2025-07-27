@@ -1,5 +1,5 @@
 <div class="form-container">
-  <h2>Inserte la información para agregar una nueva Materia</h2>
+  <h2>Inserte la información solicitada para comenzar a agregar notas</h2>
 
   <form [formGroup]="formularioNotas" (ngSubmit)="enviarFormulario()">
     <label for="materia">Materia</label>
@@ -11,16 +11,30 @@
     <div class="bloque">
       <h3>Parciales</h3>
       <label>Porcentaje de los parciales</label>
-      <div class="input-porcentaje">
-        <input type="number" formControlName="parciales" /> <span>%</span>
+      <div class="input-group">
+        <div class="input-porcentaje">
+          <input type="number" formControlName="parciales" />
+          <span>%</span>
+        </div>
+        <input type="number" formControlName="cantidad_parciales" placeholder="Cantidad" />
+      </div>
+      <div *ngIf="formularioNotas.get('cantidad_parciales')?.invalid && formularioNotas.get('cantidad_parciales')?.touched" class="error">
+        ⚠️ Máximo 5 parciales por semestre.
       </div>
     </div>
 
     <div class="bloque">
       <h3>Asignaciones</h3>
       <label>Porcentaje de las asignaciones</label>
-      <div class="input-porcentaje">
-        <input type="number" formControlName="asignaciones" /> <span>%</span>
+      <div class="input-group">
+        <div class="input-porcentaje">
+          <input type="number" formControlName="asignaciones" />
+          <span>%</span>
+        </div>
+        <input type="number" formControlName="cantidad_asignaciones" placeholder="Cantidad" />
+      </div>
+      <div *ngIf="formularioNotas.get('cantidad_asignaciones')?.invalid && formularioNotas.get('cantidad_asignaciones')?.touched" class="error">
+        ⚠️ Máximo 30 asignaciones por semestre.
       </div>
     </div>
 
@@ -28,7 +42,8 @@
       <h3>Portafolio</h3>
       <label>Porcentaje del portafolio</label>
       <div class="input-porcentaje">
-        <input type="number" formControlName="portafolio" /> <span>%</span>
+        <input type="number" formControlName="portafolio" />
+        <span>%</span>
       </div>
     </div>
 
@@ -36,11 +51,11 @@
       <h3>Semestral</h3>
       <label>Porcentaje del examen semestral</label>
       <div class="input-porcentaje">
-        <input type="number" formControlName="semestral" /> <span>%</span>
+        <input type="number" formControlName="semestral" />
+        <span>%</span>
       </div>
     </div>
 
-    <!-- ⚠️ Error si la suma no es 100% -->
     <div *ngIf="formularioNotas.errors?.['porcentajeInvalido'] && formularioNotas.touched" class="error">
       ⚠️ La suma total de porcentajes debe ser exactamente 100%.
     </div>
@@ -51,7 +66,9 @@
 
     <div class="botones">
       <button type="button" (click)="regresar()">Regresar</button>
-      <button type="submit" class="enviar">Enviar</button>
+      <button type="submit" class="enviar" [disabled]="loading">
+        {{ loading ? 'Enviando...' : 'Enviar' }}
+      </button>
     </div>
   </form>
 </div>

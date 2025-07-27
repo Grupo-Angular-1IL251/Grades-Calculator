@@ -44,6 +44,18 @@ $button-white: white;
       width: 100%;
     }
 
+    .input-group {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+
+      input[formControlName="cantidad_parciales"],
+      input[formControlName="cantidad_asignaciones"] {
+        width: 100px;
+      }
+    }
+
     .input-porcentaje {
       display: flex;
       align-items: center;
@@ -104,11 +116,11 @@ $button-white: white;
         }
       }
     }
-  }
-  .error {
-  color: red;
-  font-size: 14px;
-  margin-top: 5px;
-}
 
+    .error {
+      color: red;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+  }
 }
