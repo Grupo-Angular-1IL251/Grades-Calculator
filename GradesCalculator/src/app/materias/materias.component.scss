@@ -1,0 +1,134 @@
+$form-bg: #000;
+$text-color: white;
+$button-orange: #ED6105;
+$button-white: white;
+
+.form-container {
+  background-color: $form-bg;
+  color: $text-color;
+  padding: 30px;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  h2 {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  form {
+    width: 100%;
+    max-width: 500px; // Reducido para alinear mejor columnas
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+    }
+
+    input {
+      margin: 5px 0 15px;
+      padding: 10px;
+      font-size: 14px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    input#materia {
+      width: 100%;
+    }
+
+    .fila {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+
+      .col-porcentaje {
+        flex: 1;
+      }
+
+      .col-cantidad {
+        flex-shrink: 0;
+        width: 100px;
+
+        input {
+          width: 60px;
+          text-align: center;
+        }
+      }
+    }
+
+    .input-porcentaje {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+
+      input {
+        width: 60px;
+        text-align: center;
+      }
+
+      span {
+        font-size: 16px;
+        color: $text-color;
+      }
+    }
+
+    .bloque {
+      margin-bottom: 30px;
+    }
+
+    .nota {
+      font-size: 12px;
+      margin: 15px 0;
+      color: lighten($text-color, 30%);
+    }
+
+    .botones {
+      display: flex;
+      justify-content: space-between;
+      max-width: 350px;
+      margin-top: 20px;
+
+      button {
+        padding: 10px 20px;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: background-color 0.3s ease;
+
+        &.enviar {
+          background-color: $button-orange;
+          color: $text-color;
+
+          &:hover {
+            background-color: darken($button-orange, 10%);
+          }
+        }
+
+        &:not(.enviar) {
+          background-color: $button-white;
+          color: #000;
+
+          &:hover {
+            background-color: #ddd;
+          }
+        }
+      }
+    }
+
+    .error {
+      color: red;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+  }
+}
