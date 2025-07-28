@@ -23,11 +23,11 @@ export class LoginComponent {
   constructor(
     private authService: AuthService,
     private router: Router
-  ) {}
+  ) { }
 
   async onLogin() {
     console.log('Login button clicked!');
-    
+
     // Reset error message
     this.errorMessage = '';
 
@@ -48,7 +48,7 @@ export class LoginComponent {
 
       if (result.success) {
         console.log('Login successful!');
-        // Redirect to dashboard or home page
+        this.authService.saveUserIdToLocalStorage(result.data?.user ?? null);
         this.router.navigate(['/dashboard']);
       } else {
         this.errorMessage = result.error || 'Invalid email or password';
