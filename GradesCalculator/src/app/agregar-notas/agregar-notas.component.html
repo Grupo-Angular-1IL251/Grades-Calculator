@@ -1,0 +1,47 @@
+<div class="form-container">
+  <h2>Registro de Notas</h2>
+
+  <!-- 🆕 Formulario reactivo que activa validaciones -->
+  <form [formGroup]="formulario" (ngSubmit)="enviarFormulario()">
+
+    <div class="bloque">
+      <h3>Materia</h3>
+      <select id="materia" formControlName="materia">
+        <option value="">Seleccione una materia</option>
+        <option *ngFor="let materia of materias" [value]="materia">{{ materia }}</option>
+      </select>
+      <div *ngIf="formulario.get('materia')?.invalid && formulario.get('materia')?.touched" class="error">
+        ⚠️ Debe seleccionar una materia.
+      </div>
+    </div>
+
+    <div class="bloque">
+      <h3>Tipo de Asignación</h3>
+      <select id="tipoNota" formControlName="tipoNota">
+        <option value="">Seleccione un tipo</option> <!-- 🛠️ Texto corregido -->
+        <option *ngFor="let tipo of tipoNota" [value]="tipo">{{ tipo }}</option>
+      </select>
+      <div *ngIf="formulario.get('tipoNota')?.invalid && formulario.get('tipoNota')?.touched" class="error">
+        ⚠️ Debe seleccionar un tipo de asignación.
+      </div>
+    </div>
+
+    <div class="bloque">
+      <h3>Ingrese su Nota</h3>
+      <div class="input-porcentaje">
+        <input type="number" formControlName="nota" />
+      </div>
+      <div *ngIf="formulario.get('nota')?.invalid && formulario.get('nota')?.touched" class="error">
+        ⚠️ Ingrese una nota válida entre 0 y 100.
+      </div>
+    </div>
+
+    <div class="botones">
+      <button type="button" (click)="regresar()">Regresar</button>
+      <button type="submit" class="enviar" [disabled]="loading">
+        {{ loading ? 'Enviando...' : 'Enviar' }}
+      </button>
+    </div>
+
+  </form>
+</div>
