@@ -3,9 +3,10 @@
     <div class="nav-content">
       <h1 class="nav-title">GRADES CALCULATOR</h1>
       <div class="nav-menu">
+        <button class="nav-button" type="button" disabled>Menu Principal</button>
         <button class="nav-button" type="button">Consultar Notas</button>
-        <button class="nav-button" type="button" (click)="irAMaterias()">Agregar Notas</button>
-        <button class="nav-button" type="button">Calcular Materia</button>
+        <button class="nav-button" type="button" (click)="irAAgregar()">Agregar Materias y Notas</button>
+        <button class="nav-button" type="button">Calcular Notas</button>
         <button class="nav-button" type="button">Visualizar Progreso</button>
       </div>
       <div class="nav-actions">
@@ -19,10 +20,15 @@
       <img src="assets/logo.jpg" alt="Grades Calculator Logo" class="logo-image">
     </div>
 
-    <div class="construction-message">
-      <div class="message-box">
-        APP UNDER CONSTRUCTION...
-      </div>
+  <div class="intro-card-container">
+    <div class="intro-card">
+      <h2>¡Bienvenido a Grades Calculator!</h2>
+      <p>
+        Esta aplicación te permite registrar y consultar tus notas académicas, 
+        calcular cuánto necesitas para aprobar cada materia y visualizar tu progreso general de manera clara e intuitiva.
+      </p>
     </div>
+  </div>
+
   </div>
 </div>

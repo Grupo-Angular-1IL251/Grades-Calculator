@@ -10,9 +10,10 @@ export class DashboardComponent {
 
   constructor(private router: Router) {}
 
-  irAMaterias() {
-    this.router.navigate(['/materias']);
+  irAAgregar() {
+    this.router.navigate(['/menu-agregar']);
   }
+
 
   logout() {
     localStorage.removeItem('authToken');

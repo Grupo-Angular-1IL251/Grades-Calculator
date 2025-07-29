@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MateriasComponent } from './materias/materias.component';
 import { AgregarNotasComponent } from './agregar-notas/agregar-notas.component';
+import { MenuAgregarComponent } from './menu-agregar/menu-agregar.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/signup', pathMatch: 'full' },
@@ -12,5 +13,6 @@ export const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'materias', component: MateriasComponent }, 
   { path: 'agregar-notas', component: AgregarNotasComponent },
+  { path: 'menu-agregar', component: MenuAgregarComponent },
   { path: '**', redirectTo: '/signup' }               
 ];
