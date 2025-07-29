@@ -12,8 +12,7 @@ import { ApiService } from '../../services/api-service.service';
 })
 export class VisualizarNotasComponent implements OnInit {
   estudiante = {
-    nombre: 'Fabricio',
-    apellido: 'Mendoza',
+    
     uuid: 'a835d4d7-320b-43dc-92e3-05e95d56aa62'
   };
 

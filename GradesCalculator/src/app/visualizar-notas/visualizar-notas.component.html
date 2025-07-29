@@ -1,6 +1,7 @@
+<div class="pantalla">
 <div class="contenedor-notas">
   <div class="encabezado">
-    <h2>📊 Notas de {{ estudiante.nombre }} {{ estudiante.apellido }}</h2>
+    <h2>📊 Notas del Semestre </h2>
     <a routerLink="/materias" class="btn-agregar">+ Añadir Materias</a>
   </div>
 
@@ -15,42 +16,47 @@
         <p *ngIf="materia.notas.nota_final !== null">
           📌 Final:
           <span [ngClass]="getColor(materia.notas.nota_final)">
-            {{ materia.notas.nota_final }}%
+            {{ materia.notas.nota_final }}
           </span>
         </p>
 
         <p *ngIf="materia.notas.nota_semestral !== null">
           🧮 Semestral:
           <span [ngClass]="getColor(materia.notas.nota_semestral)">
-            {{ materia.notas.nota_semestral }}%
+            {{ materia.notas.nota_semestral }}
           </span>
         </p>
 
         <p *ngIf="materia.notas.nota_portafolio !== null">
           📁 Portafolio:
           <span [ngClass]="getColor(materia.notas.nota_portafolio)">
-            {{ materia.notas.nota_portafolio }}%
+            {{ materia.notas.nota_portafolio }}
           </span>
         </p>
 
-        <ng-container *ngIf="getPromedio(materia.notas.notas_parciales) as promedioParciales">
-          <p>
-            🧾 Parciales:
-            <span [ngClass]="getColor(promedioParciales)">
-              Prom: {{ promedioParciales }}%
+        <!-- Parciales -->
+        <div *ngIf="materia.notas.notas_parciales?.length" class="lista-notas">
+          🧾 Parciales:
+          <div class="nota-individual" *ngFor="let parcial of materia.notas.notas_parciales; let i = index">
+            Parcial {{ i + 1 }}:
+            <span [ngClass]="getColor(parcial)">
+              {{ parcial }}
             </span>
-          </p>
-        </ng-container>
+          </div>
+        </div>
 
-        <ng-container *ngIf="getPromedio(materia.notas.notas_asig) as promedioAsig">
-          <p>
-            📚 Asignaciones:
-            <span [ngClass]="getColor(promedioAsig)">
-              Prom: {{ promedioAsig }}%
+        <!-- Asignaciones -->
+        <div *ngIf="materia.notas.notas_asig?.length" class="lista-notas">
+          📚 Asignaciones:
+          <div class="nota-individual" *ngFor="let asig of materia.notas.notas_asig; let i = index">
+            Asig {{ i + 1 }}:
+            <span [ngClass]="getColor(asig)">
+              {{ asig }}
             </span>
-          </p>
-        </ng-container>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+</div>
 </div>
