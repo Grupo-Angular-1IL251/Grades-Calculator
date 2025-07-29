@@ -1,0 +1,83 @@
+.contenedor-notas {
+  padding: 2rem;
+
+  .encabezado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+
+    h2 {
+      margin: 0;
+      color: #2c3e50;
+    }
+
+    .btn-agregar {
+      background-color: #3498db;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: #2980b9;
+      }
+    }
+  }
+
+  .materias {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .materia-card {
+    background: #f9f9f9;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+
+    h3 {
+      margin-top: 0;
+      color: #34495e;
+    }
+
+    .notas {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+
+      p {
+        margin: 0;
+
+        span {
+          font-weight: bold;
+          padding: 0.2rem 0.5rem;
+          border-radius: 6px;
+        }
+
+        .alto {
+          background-color: #d4edda;
+          color: #155724;
+        }
+
+        .medio {
+          background-color: #fff3cd;
+          color: #856404;
+        }
+
+        .bajo {
+          background-color: #f8d7da;
+          color: #721c24;
+        }
+      }
+    }
+  }
+
+  .error {
+    color: #c0392b;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+}
