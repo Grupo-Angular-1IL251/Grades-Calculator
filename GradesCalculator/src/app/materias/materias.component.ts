@@ -51,6 +51,7 @@ export class MateriasComponent {
   }
 
   enviarFormulario() {
+  const id_estudiante = localStorage.getItem('user_id');
   this.formularioNotas.markAllAsTouched();
 
   const materia = this.formularioNotas.get('materia')?.value?.trim();
@@ -74,7 +75,7 @@ export class MateriasComponent {
       cant_asig: this.formularioNotas.value.cantidad_asignaciones,
       porc_portafolio: this.formularioNotas.value.portafolio,
       porc_semestral: this.formularioNotas.value.semestral,
-      uuid_estudiante: 'a835d4d7-320b-43dc-92e3-05e95d56aa62'  // TO DO
+      uuid_estudiante: id_estudiante 
     };
 
     this.apiService.registrarMateria(payload).subscribe({

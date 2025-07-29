@@ -12,7 +12,7 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 export class AgregarNotasComponent implements OnInit {
   public materias: string[] = [];
   public tipoNota: string[] = ["PARCIAL", "ASIGNACION", "PORTAFOLIO", "SEMESTRAL"];
-  uuid_estudiante = 'a835d4d7-320b-43dc-92e3-05e95d56aa62';
+  private id_estudiante: string | null = null;
 
   formulario!: FormGroup; // 🆕 Agregado para formulario reactivo
   loading = false;
@@ -23,13 +23,18 @@ export class AgregarNotasComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.id_estudiante = localStorage.getItem('user_id');
+    console.log("id estudiante: " + this.id_estudiante);
     this.formulario = this.fb.group({ // 🆕 Inicialización del formulario
       materia: ['', Validators.required],
       tipoNota: ['', Validators.required],
       nota: ['', [Validators.required, Validators.min(0), Validators.max(100)]]
     });
-
-    this.apiService.obtenerMaterias(this.uuid_estudiante).subscribe((response: any) => {
+    if (!this.id_estudiante) {
+      alert('No se pudo obtener el ID del estudiante.');
+      return;
+    }
+    this.apiService.obtenerMaterias(this.id_estudiante).subscribe((response: any) => {
       this.materias = response.data;
     });
   }
@@ -43,7 +48,7 @@ export class AgregarNotasComponent implements OnInit {
     if (this.formulario.invalid) return;
 
     const payload = {
-      uuid_estudiante: this.uuid_estudiante,
+      uuid_estudiante: this.id_estudiante,
       nombre_materia: this.formulario.value.materia,
       nota: this.formulario.value.nota,
       tipo_nota: this.formulario.value.tipoNota.toLowerCase()

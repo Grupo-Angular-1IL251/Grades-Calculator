@@ -84,4 +84,13 @@ export class AuthService {
   isLoggedIn(): boolean {
     return this.getCurrentUser() !== null;
   }
+
+  saveUserIdToLocalStorage(user: User | null) {
+    if (user?.id) {
+      localStorage.setItem('user_id', user.id);
+      console.log('User ID saved to localStorage:', user.id);
+    } else {
+      console.warn('User ID not found or is null');
+    }
+  }
 }
