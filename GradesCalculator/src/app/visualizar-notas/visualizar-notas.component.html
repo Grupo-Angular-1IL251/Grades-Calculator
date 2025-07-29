@@ -1,0 +1,56 @@
+<div class="contenedor-notas">
+  <div class="encabezado">
+    <h2>📊 Notas de {{ estudiante.nombre }} {{ estudiante.apellido }}</h2>
+    <a routerLink="/materias" class="btn-agregar">+ Añadir Materias</a>
+  </div>
+
+  <div *ngIf="cargando">Cargando materias...</div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <div *ngIf="!cargando && materias.length" class="materias">
+    <div class="materia-card" *ngFor="let materia of materias">
+      <h3>{{ materia.nombre }}</h3>
+
+      <div class="notas">
+        <p *ngIf="materia.notas.nota_final !== null">
+          📌 Final:
+          <span [ngClass]="getColor(materia.notas.nota_final)">
+            {{ materia.notas.nota_final }}%
+          </span>
+        </p>
+
+        <p *ngIf="materia.notas.nota_semestral !== null">
+          🧮 Semestral:
+          <span [ngClass]="getColor(materia.notas.nota_semestral)">
+            {{ materia.notas.nota_semestral }}%
+          </span>
+        </p>
+
+        <p *ngIf="materia.notas.nota_portafolio !== null">
+          📁 Portafolio:
+          <span [ngClass]="getColor(materia.notas.nota_portafolio)">
+            {{ materia.notas.nota_portafolio }}%
+          </span>
+        </p>
+
+        <ng-container *ngIf="getPromedio(materia.notas.notas_parciales) as promedioParciales">
+          <p>
+            🧾 Parciales:
+            <span [ngClass]="getColor(promedioParciales)">
+              Prom: {{ promedioParciales }}%
+            </span>
+          </p>
+        </ng-container>
+
+        <ng-container *ngIf="getPromedio(materia.notas.notas_asig) as promedioAsig">
+          <p>
+            📚 Asignaciones:
+            <span [ngClass]="getColor(promedioAsig)">
+              Prom: {{ promedioAsig }}%
+            </span>
+          </p>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
